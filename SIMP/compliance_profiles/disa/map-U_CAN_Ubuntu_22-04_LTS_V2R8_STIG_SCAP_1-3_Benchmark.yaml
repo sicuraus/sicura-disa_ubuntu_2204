@@ -12,9 +12,22 @@ checks:
     ces:
     - disa:Ubuntu22.04:V-260521
     - disa:Ubuntu22.04:V-260469
+    - disa:Ubuntu22.04:V-260473
   disa:ubuntu2204-systemd:timezone:
     ces:
     - disa:Ubuntu22.04:V-260521
   disa:ubuntu2204-systemd:unit_files.ctrl-alt-del.target:
     ces:
     - disa:Ubuntu22.04:V-260469
+  disa:ubuntu2204-apt:class:
+    ces:
+    - disa:Ubuntu22.04:V-260476
+  disa:ubuntu2204-apt:manage_auth_conf:
+    ces:
+    - disa:Ubuntu22.04:V-260476
+  disa:ubuntu2204-apt:confs.stig-allow-unauthenticated:
+    ces:
+    - disa:Ubuntu22.04:V-260476
+  disa:ubuntu2204-systemd:unit_files.kdump-tools.service:
+    ces:
+    - disa:Ubuntu22.04:V-260473
