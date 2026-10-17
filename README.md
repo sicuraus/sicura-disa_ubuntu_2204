@@ -4,7 +4,7 @@ Compliance Engine data for Ubuntu 22.04 LTS DISA STIG benchmarks.
 
 The following DISA STIG benchmarks are currently supported:
 
-* Canonical Ubuntu 22.04 LTS V2R5 - SCAP
+* Canonical Ubuntu 22.04 LTS V2R8 - SCAP
 
 This module is in early development. Every rule in the benchmark is available
 for reporting, but only a small number of rules are mapped to Puppet settings
