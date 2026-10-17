@@ -1,0 +1,20 @@
+# yamllint disable rule:line-length
+---
+version: 2.0.0
+checks:
+  disa:ubuntu2204-chrony:class:
+    ces:
+    - disa:Ubuntu22.04:V-260479
+  disa:ubuntu2204-chrony:package_ensure:
+    ces:
+    - disa:Ubuntu22.04:V-260479
+  disa:ubuntu2204-systemd:class:
+    ces:
+    - disa:Ubuntu22.04:V-260521
+    - disa:Ubuntu22.04:V-260469
+  disa:ubuntu2204-systemd:timezone:
+    ces:
+    - disa:Ubuntu22.04:V-260521
+  disa:ubuntu2204-systemd:unit_files.ctrl-alt-del.target:
+    ces:
+    - disa:Ubuntu22.04:V-260469
