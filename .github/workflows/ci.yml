@@ -24,8 +24,7 @@ jobs:
   # with no way to override the Vagrant box, so run acceptance tests here
   # instead. beaker-hostgenerator's default Ubuntu box (generic/ubuntu<release>)
   # is unmaintained and missing for newer releases, and Canonical does not
-  # publish libvirt boxes. bento's 22.04 libvirt box does not boot under
-  # SeaBIOS, so use cloud-image (unmodified Ubuntu cloud images).
+  # publish libvirt boxes, so use bento.
   acceptance:
     name: Acceptance - ${{ matrix.name }}
     needs: puppet
@@ -37,12 +36,13 @@ jobs:
         include:
           - name: OpenVox 8 - Ubuntu 22.04
             collection: openvox8
-            setfile: 'ubuntu2204-64{hostname=ubuntu2204-64-openvox8.example.com,box=cloud-image/ubuntu-22.04}'
+            setfile: 'ubuntu2204-64{hostname=ubuntu2204-64-openvox8.example.com,box=bento/ubuntu-22.04}'
     env:
       BUNDLE_WITHOUT: development:release
       BEAKER_HYPERVISOR: vagrant_libvirt
       BEAKER_PUPPET_COLLECTION: ${{ matrix.collection }}
       BEAKER_SETFILE: ${{ matrix.setfile }}
+      BEAKER_OPTIONS_FILE: spec/acceptance/beaker_options.rb
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
       - name: Disable AppArmor
@@ -54,7 +54,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:evgeni/vagrant
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends vagrant vagrant-libvirt libvirt-daemon-system libvirt-daemon qemu-system-x86 qemu-utils dnsmasq
+          sudo apt-get install -y --no-install-recommends vagrant vagrant-libvirt libvirt-daemon-system libvirt-daemon qemu-system-x86 qemu-utils dnsmasq ovmf
           sudo chmod 666 /var/run/libvirt/libvirt-sock
       - name: Set up Ruby
         uses: ruby/setup-ruby@651ff0d62c5c79bed6d53ec518387aae20e72c1a  # v1.329.0
