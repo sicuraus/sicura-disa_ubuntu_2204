@@ -30,3 +30,15 @@ checks:
     remediation:
       risk:
       - level: 21
+  disa:ubuntu2204-systemd:unit_files.kdump-tools.service:
+    type: puppet-class-parameter
+    settings:
+      parameter: systemd::unit_files
+      value:
+        kdump-tools.service:
+          target: "/dev/null"
+    remediation:
+      risk:
+      - level: 21
+        reason: Masks kdump-tools, disabling kernel crash dumps. Sites that need crash
+          dumps must document the need with the ISSO and leave this check unenforced.
